@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2014-11-28T21:16:26+09:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[zhupeijun]]></title>
+  <link href="http://zhupeijun.github.io/atom.xml" rel="self"/>
+  <link href="http://zhupeijun.github.io/"/>
+  <updated>2014-11-28T21:19:12+09:00</updated>
+  <id>http://zhupeijun.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[zhupeijun]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[iOS] Change the Constraints Value When Use the Auto Layout]]></title>
-    <link href="http://yoursite.com/blog/2014/11/28/ios-change-the-constraints-value-when-use-the-auto-layout/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/11/28/ios-change-the-constraints-value-when-use-the-auto-layout/"/>
     <updated>2014-11-28T12:06:50+09:00</updated>
-    <id>http://yoursite.com/blog/2014/11/28/ios-change-the-constraints-value-when-use-the-auto-layout</id>
+    <id>http://zhupeijun.github.io/blog/2014/11/28/ios-change-the-constraints-value-when-use-the-auto-layout</id>
     <content type="html"><![CDATA[<p>When you use the auto layout, you will set some constraints  to some view. Also maybe you want to change the value in the code. Just do this:</p>
 
 <p>First drag the constraint you want to change to the code area to generate a constraint property.</p>
@@ -39,9 +39,9 @@
   
   <entry>
     <title type="html"><![CDATA[[Number Theory] Euclidean Algorithm &amp; Inverse Element]]></title>
-    <link href="http://yoursite.com/blog/2014/11/24/number-theory-euclidean-algorithm-and-inverse-element/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/11/24/number-theory-euclidean-algorithm-and-inverse-element/"/>
     <updated>2014-11-24T23:45:07+09:00</updated>
-    <id>http://yoursite.com/blog/2014/11/24/number-theory-euclidean-algorithm-and-inverse-element</id>
+    <id>http://zhupeijun.github.io/blog/2014/11/24/number-theory-euclidean-algorithm-and-inverse-element</id>
     <content type="html"><![CDATA[<p>With the inverse element, we can get the value of modulo in a division, such as <code>k = (a / b) % m</code>. To generate a inverse element, we should know the euclidean algorithm.</p>
 
 <h3>Euclidean Algorithm</h3>
@@ -96,9 +96,9 @@ is the same with the value of <code>gcd(b, a % b)</code></p>
   
   <entry>
     <title type="html"><![CDATA[[Git] Config Git to Push Current Branch]]></title>
-    <link href="http://yoursite.com/blog/2014/11/17/git-config-git-to-push-current-branch/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/11/17/git-config-git-to-push-current-branch/"/>
     <updated>2014-11-17T13:25:09+09:00</updated>
-    <id>http://yoursite.com/blog/2014/11/17/git-config-git-to-push-current-branch</id>
+    <id>http://zhupeijun.github.io/blog/2014/11/17/git-config-git-to-push-current-branch</id>
     <content type="html"><![CDATA[<p>If you want to only push the current branch without the branch name, you can use this command to setup your config file.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -117,9 +117,9 @@ is the same with the value of <code>gcd(b, a % b)</code></p>
   
   <entry>
     <title type="html"><![CDATA[[Git] Base Operation]]></title>
-    <link href="http://yoursite.com/blog/2014/11/13/git-base-operation/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/11/13/git-base-operation/"/>
     <updated>2014-11-13T14:00:46+09:00</updated>
-    <id>http://yoursite.com/blog/2014/11/13/git-base-operation</id>
+    <id>http://zhupeijun.github.io/blog/2014/11/13/git-base-operation</id>
     <content type="html"><![CDATA[<p>Some memo for the branch operation.</p>
 
 <p><strong>Delete Remote Branch</strong></p>
@@ -144,9 +144,9 @@ is the same with the value of <code>gcd(b, a % b)</code></p>
   
   <entry>
     <title type="html"><![CDATA[[Git] About Rebase]]></title>
-    <link href="http://yoursite.com/blog/2014/11/12/git-about-rebase/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/11/12/git-about-rebase/"/>
     <updated>2014-11-12T11:31:28+09:00</updated>
-    <id>http://yoursite.com/blog/2014/11/12/git-about-rebase</id>
+    <id>http://zhupeijun.github.io/blog/2014/11/12/git-about-rebase</id>
     <content type="html"><![CDATA[<h4>git pull &ndash;rebase</h4>
 
 <p>This command will get rebase the remote branch with the local branch.</p>
@@ -210,9 +210,9 @@ Why pick up the H, I, J? Because the client and server have the same ancestor D,
   
   <entry>
     <title type="html"><![CDATA[[Python] Read From Stdin]]></title>
-    <link href="http://yoursite.com/blog/2014/11/12/python-read-from-stdin/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/11/12/python-read-from-stdin/"/>
     <updated>2014-11-12T11:06:18+09:00</updated>
-    <id>http://yoursite.com/blog/2014/11/12/python-read-from-stdin</id>
+    <id>http://zhupeijun.github.io/blog/2014/11/12/python-read-from-stdin</id>
     <content type="html"><![CDATA[<p>If you want to read a line from the stdin. Use this:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -251,9 +251,9 @@ Why pick up the H, I, J? Because the client and server have the same ancestor D,
   
   <entry>
     <title type="html"><![CDATA[[iOS] Slide Down Refresh TableView -- UIRefreshControl]]></title>
-    <link href="http://yoursite.com/blog/2014/11/01/ios-slide-down-refresh-tableview-uirefreshcontrol/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/11/01/ios-slide-down-refresh-tableview-uirefreshcontrol/"/>
     <updated>2014-11-01T22:28:57+09:00</updated>
-    <id>http://yoursite.com/blog/2014/11/01/ios-slide-down-refresh-tableview-uirefreshcontrol</id>
+    <id>http://zhupeijun.github.io/blog/2014/11/01/ios-slide-down-refresh-tableview-uirefreshcontrol</id>
     <content type="html"><![CDATA[<p>For the table view, you want to slide down the table view to refresh the data of the table view. Maybe you need to add the <code>UIRefreshControl</code> to the <code>TableView</code>.</p>
 
 <p>You can use the <code>UIRefreshControl</code> like this:</p>
@@ -292,9 +292,9 @@ Why pick up the H, I, J? Because the client and server have the same ancestor D,
   
   <entry>
     <title type="html"><![CDATA[[Android] the Code Style for Android]]></title>
-    <link href="http://yoursite.com/blog/2014/10/31/android-the-code-style-for-android/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/10/31/android-the-code-style-for-android/"/>
     <updated>2014-10-31T00:29:48+09:00</updated>
-    <id>http://yoursite.com/blog/2014/10/31/android-the-code-style-for-android</id>
+    <id>http://zhupeijun.github.io/blog/2014/10/31/android-the-code-style-for-android</id>
     <content type="html"><![CDATA[<p>This <a href="https://source.android.com/source/code-style.html">link</a> from the android official site have introduced some code style or rules for the android development. Some of these rules could also be used in other language.</p>
 
 <p>The link: <a href="https://source.android.com/source/code-style.html">https://source.android.com/source/code-style.html</a></p>
@@ -303,9 +303,9 @@ Why pick up the H, I, J? Because the client and server have the same ancestor D,
   
   <entry>
     <title type="html"><![CDATA[[VIM] Vim Set Template Script]]></title>
-    <link href="http://yoursite.com/blog/2014/10/31/vim-vim-set-template-script/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/10/31/vim-vim-set-template-script/"/>
     <updated>2014-10-31T00:27:42+09:00</updated>
-    <id>http://yoursite.com/blog/2014/10/31/vim-vim-set-template-script</id>
+    <id>http://zhupeijun.github.io/blog/2014/10/31/vim-vim-set-template-script</id>
     <content type="html"><![CDATA[<p>Add following config to your <code>.vimrc</code> file.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -319,9 +319,9 @@ Why pick up the H, I, J? Because the client and server have the same ancestor D,
   
   <entry>
     <title type="html"><![CDATA[[Ruby] Read JSON From Url and Parse JSON]]></title>
-    <link href="http://yoursite.com/blog/2014/10/30/ruby-read-json-from-url-and-parse-json/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/10/30/ruby-read-json-from-url-and-parse-json/"/>
     <updated>2014-10-30T01:21:09+09:00</updated>
-    <id>http://yoursite.com/blog/2014/10/30/ruby-read-json-from-url-and-parse-json</id>
+    <id>http://zhupeijun.github.io/blog/2014/10/30/ruby-read-json-from-url-and-parse-json</id>
     <content type="html"><![CDATA[<p>We can use the <code>open-uri</code> to get the content from the url. And use the <code>JSON</code> to parse the JSON string to hash or array.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -358,9 +358,9 @@ Why pick up the H, I, J? Because the client and server have the same ancestor D,
   
   <entry>
     <title type="html"><![CDATA[[iOS] Add Local Notifications]]></title>
-    <link href="http://yoursite.com/blog/2014/10/23/ios-add-local-notifications/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/10/23/ios-add-local-notifications/"/>
     <updated>2014-10-23T09:46:13+09:00</updated>
-    <id>http://yoursite.com/blog/2014/10/23/ios-add-local-notifications</id>
+    <id>http://zhupeijun.github.io/blog/2014/10/23/ios-add-local-notifications</id>
     <content type="html"><![CDATA[<p>If you want to send local notifications for the user. You can use the <code>UILocalNotification</code>. Just like this.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -410,9 +410,9 @@ Why pick up the H, I, J? Because the client and server have the same ancestor D,
   
   <entry>
     <title type="html"><![CDATA[[iOS] Get Date From Formatted String or Make a Formatted Date String]]></title>
-    <link href="http://yoursite.com/blog/2014/10/22/ios-get-date-from-formatted-string-or-make-a-formatted-date-string/"/>
+    <link href="http://zhupeijun.github.io/blog/2014/10/22/ios-get-date-from-formatted-string-or-make-a-formatted-date-string/"/>
     <updated>2014-10-22T13:40:35+09:00</updated>
-    <id>http://yoursite.com/blog/2014/10/22/ios-get-date-from-formatted-string-or-make-a-formatted-date-string</id>
+    <id>http://zhupeijun.github.io/blog/2014/10/22/ios-get-date-from-formatted-string-or-make-a-formatted-date-string</id>
     <content type="html"><![CDATA[<p>If you have a string like <code>2014-10-22 00:54:00</code>. You can convert the string to the <code>NSDate</code>.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
