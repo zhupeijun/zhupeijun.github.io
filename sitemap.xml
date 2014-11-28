@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/11/28/ios-change-the-constraints-value-when-use-the-auto-layout/</loc>
+    <loc>http://yoursite.com/blog/2014/11/28/ios-change-the-constraints-value-when-use-the-auto-layout/</loc>
     <lastmod>2014-11-28T12:06:50+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/11/24/number-theory-euclidean-algorithm-and-inverse-element/</loc>
+    <loc>http://yoursite.com/blog/2014/11/24/number-theory-euclidean-algorithm-and-inverse-element/</loc>
     <lastmod>2014-11-24T23:45:07+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/11/17/git-config-git-to-push-current-branch/</loc>
+    <loc>http://yoursite.com/blog/2014/11/17/git-config-git-to-push-current-branch/</loc>
     <lastmod>2014-11-17T13:25:09+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/11/13/git-base-operation/</loc>
+    <loc>http://yoursite.com/blog/2014/11/13/git-base-operation/</loc>
     <lastmod>2014-11-13T14:00:46+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/11/12/git-about-rebase/</loc>
+    <loc>http://yoursite.com/blog/2014/11/12/git-about-rebase/</loc>
     <lastmod>2014-11-12T11:31:28+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/11/12/python-read-from-stdin/</loc>
+    <loc>http://yoursite.com/blog/2014/11/12/python-read-from-stdin/</loc>
     <lastmod>2014-11-12T11:06:18+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/11/01/ios-slide-down-refresh-tableview-uirefreshcontrol/</loc>
+    <loc>http://yoursite.com/blog/2014/11/01/ios-slide-down-refresh-tableview-uirefreshcontrol/</loc>
     <lastmod>2014-11-01T22:28:57+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/10/31/android-the-code-style-for-android/</loc>
+    <loc>http://yoursite.com/blog/2014/10/31/android-the-code-style-for-android/</loc>
     <lastmod>2014-10-31T00:29:48+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/10/31/vim-vim-set-template-script/</loc>
+    <loc>http://yoursite.com/blog/2014/10/31/vim-vim-set-template-script/</loc>
     <lastmod>2014-10-31T00:27:42+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/10/30/ruby-read-json-from-url-and-parse-json/</loc>
+    <loc>http://yoursite.com/blog/2014/10/30/ruby-read-json-from-url-and-parse-json/</loc>
     <lastmod>2014-10-30T01:21:09+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/10/23/ios-add-local-notifications/</loc>
+    <loc>http://yoursite.com/blog/2014/10/23/ios-add-local-notifications/</loc>
     <lastmod>2014-10-23T09:46:13+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/2014/10/22/ios-get-date-from-formatted-string-or-make-a-formatted-date-string/</loc>
+    <loc>http://yoursite.com/blog/2014/10/22/ios-get-date-from-formatted-string-or-make-a-formatted-date-string/</loc>
     <lastmod>2014-10-22T13:40:35+09:00</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/blog/archives/</loc>
-    <lastmod>2014-11-28T18:36:26+09:00</lastmod>
+    <loc>http://yoursite.com/blog/archives/</loc>
+    <lastmod>2014-11-28T21:16:26+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://zhupeijun.github.io/</loc>
-    <lastmod>2014-11-28T18:36:26+09:00</lastmod>
+    <loc>http://yoursite.com/</loc>
+    <lastmod>2014-11-28T21:16:26+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
