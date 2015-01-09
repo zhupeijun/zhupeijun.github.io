@@ -5,12 +5,20 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>[VIM] Vim Set Template Script - zhupeijun</title>
+  <title>[Android] Button Corner Radius - zhupeijun</title>
   <meta name="author" content="zhupeijun">
 
   
-  <meta name="description" content="Add following config to your .vimrc file. 1
-command Rt 0r ~/.vim/template/t.cpp The t.cpp is the file of the template script. In the vim, use the Rt &hellip;">
+  <meta name="description" content="If you want to make some button with corner radius like this: 1.Create a drawable xml file. 1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;?xml version=&quot;1.0&quot; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +27,7 @@ command Rt 0r ~/.vim/template/t.cpp The t.cpp is the file of the template script
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhupeijun.github.io/blog/2014/10/31/vim-vim-set-template-script">
+  <link rel="canonical" href="http://zhupeijun.github.io/blog/2014/12/19/android-button-corner-radius">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="zhupeijun" type="application/atom+xml">
@@ -92,7 +100,7 @@ command Rt 0r ~/.vim/template/t.cpp The t.cpp is the file of the template script
   <header>
     
       
-        <h1 class="entry-title">[VIM] Vim Set Template Script</h1>
+        <h1 class="entry-title">[Android] Button Corner Radius</h1>
       
     
     
@@ -102,7 +110,7 @@ command Rt 0r ~/.vim/template/t.cpp The t.cpp is the file of the template script
 
 
 
-<time class='entry-date' datetime='2014-10-31T00:27:42+09:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:27 am</span></time>
+<time class='entry-date' datetime='2014-12-19T23:16:13+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:16 pm</span></time>
         
         
       </p>
@@ -110,14 +118,49 @@ command Rt 0r ~/.vim/template/t.cpp The t.cpp is the file of the template script
   </header>
 
 
-<div class="entry-content"><p>Add following config to your <code>.vimrc</code> file.</p>
+<div class="entry-content"><p>If you want to make some button with corner radius like this:</p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/51455/e08ded3e-1994-5427-425d-bb41940c51a7.png" alt="Screen Shot 2014-12-19 at 23.09.47.png" /></p>
+
+<p>1.Create a drawable xml file.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='vim'><span class='line'>command Rt <span class="m">0</span>r  <span class="p">~</span><span class="sr">/.vim/</span>template/<span class="k">t</span>.cpp
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;selector</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;shape</span> <span class="na">android:shape=</span><span class="s">&quot;rectangle&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;solid</span> <span class="na">android:color=</span><span class="s">&quot;#FF5E3A&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;corners</span> <span class="na">android:radius=</span><span class="s">&quot;10dp&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/shape&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'><span class="nt">&lt;/selector&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>The <code>t.cpp</code> is the file of the template script. In the vim, use the <code>Rt</code> command to load the script.</p>
+<p>2.Set this drawable as your button&rsquo;s background.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Button</span>
+</span><span class='line'>    <span class="na">android:text=</span><span class="s">&quot;CLICK&quot;</span>
+</span><span class='line'>    <span class="na">android:background=</span><span class="s">&quot;@drawable/orange_corner_radius_bg&quot;</span>
+</span><span class='line'>    <span class="na">android:textColor=</span><span class="s">&quot;#ffffff&quot;</span>
+</span><span class='line'>    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+</span><span class='line'>    <span class="na">android:layout_height=</span><span class="s">&quot;40dp&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -140,7 +183,7 @@ command Rt 0r ~/.vim/template/t.cpp The t.cpp is the file of the template script
 
 
 
-<time class='entry-date' datetime='2014-10-31T00:27:42+09:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:27 am</span></time>
+<time class='entry-date' datetime='2014-12-19T23:16:13+09:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:16 pm</span></time>
       
       
 
@@ -149,7 +192,7 @@ command Rt 0r ~/.vim/template/t.cpp The t.cpp is the file of the template script
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zhupeijun.github.io/blog/2014/10/31/vim-vim-set-template-script/" data-via="" data-counturl="http://zhupeijun.github.io/blog/2014/10/31/vim-vim-set-template-script/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zhupeijun.github.io/blog/2014/12/19/android-button-corner-radius/" data-via="" data-counturl="http://zhupeijun.github.io/blog/2014/12/19/android-button-corner-radius/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -162,10 +205,10 @@ command Rt 0r ~/.vim/template/t.cpp The t.cpp is the file of the template script
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/10/30/ruby-read-json-from-url-and-parse-json/" title="Previous Post: [Ruby] Read JSON from url and parse JSON">&laquo; [Ruby] Read JSON from url and parse JSON</a>
+        <a class="basic-alignment left" href="/blog/2014/12/19/vim-vim-basic-command-memo/" title="Previous Post: [Vim] Vim Basic Command Memo">&laquo; [Vim] Vim Basic Command Memo</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/10/31/android-the-code-style-for-android/" title="Next Post: [Android] The Code Style for Android">[Android] The Code Style for Android &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/01/07/android-install-apk-file-with-adb/" title="Next Post: [Android] Install apk file with adb">[Android] Install apk file with adb &raquo;</a>
       
     </p>
   </footer>

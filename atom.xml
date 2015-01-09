@@ -4,7 +4,7 @@
   <title><![CDATA[zhupeijun]]></title>
   <link href="http://zhupeijun.github.io/atom.xml" rel="self"/>
   <link href="http://zhupeijun.github.io/"/>
-  <updated>2014-11-28T21:23:51+09:00</updated>
+  <updated>2015-01-09T19:31:27+09:00</updated>
   <id>http://zhupeijun.github.io/</id>
   <author>
     <name><![CDATA[zhupeijun]]></name>
@@ -12,6 +12,176 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[[MySql] Some Notes When Install Mysql With Homebrew]]></title>
+    <link href="http://zhupeijun.github.io/blog/2015/01/09/mysql-some-notes-when-install-mysql-with-homebrew/"/>
+    <updated>2015-01-09T00:45:25+09:00</updated>
+    <id>http://zhupeijun.github.io/blog/2015/01/09/mysql-some-notes-when-install-mysql-with-homebrew</id>
+    <content type="html"><![CDATA[<h4>Start Errors</h4>
+
+<p>When use <code>mysql.server start</code> has the following error:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Starting MySQL
+</span><span class='line'>ERROR! The server quit without updating PID file <span class="o">(</span>/usr/local/var/mysql/&lt;PC-NAME&gt;.local.pid<span class="o">)</span>.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Solution:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo chown &lt;USER-NAME&gt; &lt;PC-NAME&gt;.local.err
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Start mysql from startup in OS X</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
+</span><span class='line'>launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Haskell] Some Memo About Learning Haskell]]></title>
+    <link href="http://zhupeijun.github.io/blog/2015/01/07/haskell-some-memo-about-learning-haskell/"/>
+    <updated>2015-01-07T12:57:59+09:00</updated>
+    <id>http://zhupeijun.github.io/blog/2015/01/07/haskell-some-memo-about-learning-haskell</id>
+    <content type="html"><![CDATA[<p>Here has a web site to learn haskell online:</p>
+
+<p><a href="https://tryhaskell.org/">Try Haskell</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Android] Install Apk File With Adb]]></title>
+    <link href="http://zhupeijun.github.io/blog/2015/01/07/android-install-apk-file-with-adb/"/>
+    <updated>2015-01-07T00:25:57+09:00</updated>
+    <id>http://zhupeijun.github.io/blog/2015/01/07/android-install-apk-file-with-adb</id>
+    <content type="html"><![CDATA[<p>You can install the apk in the command line with this command:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>adb install &lt;apk-filename&gt;</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Android] Button Corner Radius]]></title>
+    <link href="http://zhupeijun.github.io/blog/2014/12/19/android-button-corner-radius/"/>
+    <updated>2014-12-19T23:16:13+09:00</updated>
+    <id>http://zhupeijun.github.io/blog/2014/12/19/android-button-corner-radius</id>
+    <content type="html"><![CDATA[<p>If you want to make some button with corner radius like this:</p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/51455/e08ded3e-1994-5427-425d-bb41940c51a7.png" alt="Screen Shot 2014-12-19 at 23.09.47.png" /></p>
+
+<p>1.Create a drawable xml file.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;selector</span> <span class="na">xmlns:android=</span><span class="s">&quot;http://schemas.android.com/apk/res/android&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;shape</span> <span class="na">android:shape=</span><span class="s">&quot;rectangle&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;solid</span> <span class="na">android:color=</span><span class="s">&quot;#FF5E3A&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;corners</span> <span class="na">android:radius=</span><span class="s">&quot;10dp&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/shape&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'><span class="nt">&lt;/selector&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.Set this drawable as your button&rsquo;s background.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;Button</span>
+</span><span class='line'>    <span class="na">android:text=</span><span class="s">&quot;CLICK&quot;</span>
+</span><span class='line'>    <span class="na">android:background=</span><span class="s">&quot;@drawable/orange_corner_radius_bg&quot;</span>
+</span><span class='line'>    <span class="na">android:textColor=</span><span class="s">&quot;#ffffff&quot;</span>
+</span><span class='line'>    <span class="na">android:layout_width=</span><span class="s">&quot;match_parent&quot;</span>
+</span><span class='line'>    <span class="na">android:layout_height=</span><span class="s">&quot;40dp&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Vim] Vim Basic Command Memo]]></title>
+    <link href="http://zhupeijun.github.io/blog/2014/12/19/vim-vim-basic-command-memo/"/>
+    <updated>2014-12-19T10:06:54+09:00</updated>
+    <id>http://zhupeijun.github.io/blog/2014/12/19/vim-vim-basic-command-memo</id>
+    <content type="html"><![CDATA[<table>
+<thead>
+<tr>
+<th style="text-align:center;">Name</th>
+<th style="text-align:center;">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">Open previous opened file</td>
+<td style="text-align:center;"><kbd>Ctrl</kbd>+<kbd>o</kbd></td>
+</tr>
+<tr>
+<td style="text-align:center;">Redo</td>
+<td style="text-align:center;"><kbd>Ctrl</kbd>+<kbd>r</kbd></td>
+</tr>
+<tr>
+<td style="text-align:center;">Jump to line end</td>
+<td style="text-align:center;"><kbd>$</kbd></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Other:</p>
+
+<p><strong>Comment</strong></p>
+
+<ol>
+<li><kbd>Ctrl</kbd>+<kbd>v</kbd></li>
+<li>Select lines need to comment</li>
+<li><kbd>Shift</kbd>+<kbd>i</kbd></li>
+<li>Input comment characters. e.g. &ldquo;#&rdquo;, &ldquo;//&rdquo;</li>
+<li><kbd>Esc</kbd></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[[Vim] the Colorscheme Not Working in iTerm2]]></title>
+    <link href="http://zhupeijun.github.io/blog/2014/12/13/vim-the-colorscheme-not-working-in-iterm2/"/>
+    <updated>2014-12-13T17:12:20+09:00</updated>
+    <id>http://zhupeijun.github.io/blog/2014/12/13/vim-the-colorscheme-not-working-in-iterm2</id>
+    <content type="html"><![CDATA[<p>Sometimes you set the <code>colorscheme</code> is not working.</p>
+
+<p>One possible way is going to the Preferences -> Profiles -> Terminal.</p>
+
+<p>Set the <code>Report Terminal Type</code> to <code>xterm-256color</code></p>
+
+<p>Just like this:</p>
+
+<p><img src="https://qiita-image-store.s3.amazonaws.com/0/51455/1a7f0e8d-ae9a-c142-7aef-5217325c5834.png" alt="Screen Shot 2014-12-13 at 17.11.21.png" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[[iOS] Change the Constraints Value When Use the Auto Layout]]></title>
