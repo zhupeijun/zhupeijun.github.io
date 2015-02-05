@@ -5,14 +5,23 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>[MySql] Some Notes When Install Mysql With Homebrew - zhupeijun</title>
+  <title>[Rails] Custom Validator - zhupeijun</title>
   <meta name="author" content="zhupeijun">
 
   
-  <meta name="description" content="Start Errors When use mysql.server start has the following error: 1
+  <meta name="description" content="If you want to make the custom validator in your model. Validate With 1
 2
-Starting MySQL
-ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+class MyValidator &lt; ActiveModel::Validator def &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +30,7 @@ ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhupeijun.github.io/blog/2015/01/09/mysql-some-notes-when-install-mysql-with-homebrew">
+  <link rel="canonical" href="http://zhupeijun.github.io/blog/2015/01/11/rails-custom-validator">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="zhupeijun" type="application/atom+xml">
@@ -94,7 +103,7 @@ ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
   <header>
     
       
-        <h1 class="entry-title">[MySql] Some Notes When Install Mysql With Homebrew</h1>
+        <h1 class="entry-title">[Rails] Custom Validator</h1>
       
     
     
@@ -104,7 +113,7 @@ ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-01-09T00:45:25+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:45 am</span></time>
+<time class='entry-date' datetime='2015-01-11T18:17:14+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:17 pm</span></time>
         
         
       </p>
@@ -112,32 +121,67 @@ ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
   </header>
 
 
-<div class="entry-content"><h4>Start Errors</h4>
+<div class="entry-content"><p>If you want to make the custom validator in your model.</p>
 
-<p>When use <code>mysql.server start</code> has the following error:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>Starting MySQL
-</span><span class='line'>ERROR! The server quit without updating PID file <span class="o">(</span>/usr/local/var/mysql/&lt;PC-NAME&gt;.local.pid<span class="o">)</span>.
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Solution:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo chown &lt;USER-NAME&gt; &lt;PC-NAME&gt;.local.err
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Start mysql from startup in OS X</h4>
+<h3>Validate With</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-</span><span class='line'>launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">MyValidator</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validator</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">unless</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">starts_with?</span> <span class="s1">&#39;X&#39;</span>
+</span><span class='line'>      <span class="n">record</span><span class="o">.</span><span class="n">errors</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;Need a name starting with X please!&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Person</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span>
+</span><span class='line'>  <span class="n">validates_with</span> <span class="no">MyValidator</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>If error occurred, the person.errors.message[:name] will have the error message.</p>
+
+<h3>Validate Each</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">EmailValidator</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">EachValidator</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">validate_each</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">unless</span> <span class="n">value</span> <span class="o">=~</span> <span class="sr">/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i</span>
+</span><span class='line'>      <span class="n">record</span><span class="o">.</span><span class="n">errors</span><span class="o">[</span><span class="n">attribute</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">]</span> <span class="o">||</span> <span class="s2">&quot;is not an email&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Person</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">email</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For more information, see <a href="http://guides.rubyonrails.org/active_record_validations.html#custom-validators">rails guides</a></p>
 </div>
 
 
@@ -160,7 +204,7 @@ ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-01-09T00:45:25+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:45 am</span></time>
+<time class='entry-date' datetime='2015-01-11T18:17:14+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:17 pm</span></time>
       
       
 
@@ -169,7 +213,7 @@ ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zhupeijun.github.io/blog/2015/01/09/mysql-some-notes-when-install-mysql-with-homebrew/" data-via="" data-counturl="http://zhupeijun.github.io/blog/2015/01/09/mysql-some-notes-when-install-mysql-with-homebrew/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zhupeijun.github.io/blog/2015/01/11/rails-custom-validator/" data-via="" data-counturl="http://zhupeijun.github.io/blog/2015/01/11/rails-custom-validator/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -182,10 +226,10 @@ ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/01/07/haskell-some-memo-about-learning-haskell/" title="Previous Post: [Haskell] Some memo about learning haskell">&laquo; [Haskell] Some memo about learning haskell</a>
+        <a class="basic-alignment left" href="/blog/2015/01/09/mysql-some-notes-when-install-mysql-with-homebrew/" title="Previous Post: [MySql] Some notes when install mysql with homebrew">&laquo; [MySql] Some notes when install mysql with homebrew</a>
       
       
-        <a class="basic-alignment right" href="/blog/2015/01/11/rails-custom-validator/" title="Next Post: [Rails] Custom Validator">[Rails] Custom Validator &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/02/03/rails-factorygirl-generate-random-users/" title="Next Post: [Rails] FactoryGirl generate random users">[Rails] FactoryGirl generate random users &raquo;</a>
       
     </p>
   </footer>

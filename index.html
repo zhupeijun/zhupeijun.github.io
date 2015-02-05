@@ -9,10 +9,15 @@
   <meta name="author" content="zhupeijun">
 
   
-  <meta name="description" content="Start Errors When use mysql.server start has the following error: 1
+  <meta name="description" content="If you want to generate a user with different uuid or email address, try to do this way. 1
 2
-Starting MySQL
-ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
+3
+4
+5
+6
+7
+8
+FactoryGirl.define do factory :user do uuid &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +95,153 @@ ERROR! The server quit without updating PID file (/usr/local/var &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/03/rails-factorygirl-generate-random-users/">[Rails] FactoryGirl Generate Random Users</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-03T21:01:13+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:01 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you want to generate a user with different uuid or email address, try to do this way.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">FactoryGirl</span><span class="o">.</span><span class="n">define</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">factory</span> <span class="ss">:user</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">uuid</span>                  <span class="p">{</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">uuid</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">sequence</span><span class="p">(</span><span class="ss">:email</span><span class="p">)</span>      <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="s2">&quot;test</span><span class="si">#{</span><span class="n">n</span><span class="si">}</span><span class="s2">@abc.com&quot;</span> <span class="p">}</span>
+</span><span class='line'>    <span class="n">password</span>              <span class="s2">&quot;password&quot;</span>
+</span><span class='line'>    <span class="n">password_confirmation</span> <span class="s2">&quot;password&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>POINT:</strong>
+The <code>SecureRandom.uuid</code> will generate same uuid if you do something like this.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">uuid</span>  <span class="no">SecureRandom</span><span class="o">.</span><span class="n">uuid</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/01/11/rails-custom-validator/">[Rails] Custom Validator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-11T18:17:14+09:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:17 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you want to make the custom validator in your model.</p>
+
+<h3>Validate With</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">MyValidator</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validator</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">unless</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">starts_with?</span> <span class="s1">&#39;X&#39;</span>
+</span><span class='line'>      <span class="n">record</span><span class="o">.</span><span class="n">errors</span><span class="o">[</span><span class="ss">:name</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;Need a name starting with X please!&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Person</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Validations</span>
+</span><span class='line'>  <span class="n">validates_with</span> <span class="no">MyValidator</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If error occurred, the person.errors.message[:name] will have the error message.</p>
+
+<h3>Validate Each</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">EmailValidator</span> <span class="o">&lt;</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">EachValidator</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">validate_each</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">attribute</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">unless</span> <span class="n">value</span> <span class="o">=~</span> <span class="sr">/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i</span>
+</span><span class='line'>      <span class="n">record</span><span class="o">.</span><span class="n">errors</span><span class="o">[</span><span class="n">attribute</span><span class="o">]</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">options</span><span class="o">[</span><span class="ss">:message</span><span class="o">]</span> <span class="o">||</span> <span class="s2">&quot;is not an email&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Person</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">email</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For more information, see <a href="http://guides.rubyonrails.org/active_record_validations.html#custom-validators">rails guides</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -503,96 +655,6 @@ is the same with the value of <code>gcd(b, a % b)</code></p>
 <h3>Solve <em>ax + by = gcd(a, b)</em></h3>
 
 <p><strong><em>To be continued&hellip;</em></strong></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/17/git-config-git-to-push-current-branch/">[Git] Config Git to Push Current Branch</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-17T13:25:09+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:25 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you want to only push the current branch without the branch name, you can use this command to setup your config file.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global push.default current</span></code></pre></td></tr></table></div></figure>
-
-
-<p>This will add the following things to your <code>.gitconfig</code> file.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>[push]
-</span><span class='line'>  default = current</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/13/git-base-operation/">[Git] Base Operation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-13T14:00:46+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:00 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some memo for the branch operation.</p>
-
-<p><strong>Delete Remote Branch</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git push origin :&lt;branch_name&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Rename Branch</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git rename -m &lt;old_name&gt; &lt;new_name&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Change Remote Origin Url</strong></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git remote set-url origin &lt;remote-url&gt;</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
   

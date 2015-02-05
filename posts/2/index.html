@@ -9,10 +9,8 @@
   <meta name="author" content="zhupeijun">
 
   
-  <meta name="description" content="git pull &ndash;rebase This command will get rebase the remote branch with the local branch. Before 1
-2
-3 D --- E local branch /
-A --- B --- C origin &hellip;">
+  <meta name="description" content="If you want to only push the current branch without the branch name, you can use this command to setup your config file. 1
+git config --global push. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +88,96 @@ A --- B --- C origin &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/17/git-config-git-to-push-current-branch/">[Git] Config Git to Push Current Branch</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-17T13:25:09+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:25 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you want to only push the current branch without the branch name, you can use this command to setup your config file.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git config --global push.default current</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will add the following things to your <code>.gitconfig</code> file.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[push]
+</span><span class='line'>  default = current</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/13/git-base-operation/">[Git] Base Operation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-13T14:00:46+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:00 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some memo for the branch operation.</p>
+
+<p><strong>Delete Remote Branch</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git push origin :&lt;branch_name&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Rename Branch</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git rename -m &lt;old_name&gt; &lt;new_name&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Change Remote Origin Url</strong></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git remote set-url origin &lt;remote-url&gt;</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
