@@ -9,7 +9,7 @@
   <meta name="author" content="zhupeijun">
 
   
-  <meta name="description" content="If you want to generate a user with different uuid or email address, try to do this way. 1
+  <meta name="description" content="fmt When read from stdin or write to stdout, the easiest way is to use the fmt package method. Just like c. 1
 2
 3
 4
@@ -17,7 +17,8 @@
 6
 7
 8
-FactoryGirl.define do factory :user do uuid &hellip;">
+9
+import &quot;fmt&quot; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +96,206 @@ FactoryGirl.define do factory :user do uuid &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/02/18/go-read-from-stdin/">[Go] Read From Stdin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-18T15:04:20+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:04 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>fmt</h2>
+
+<p>When read from stdin or write to stdout, the easiest way is to use the <code>fmt</code> package method. Just like c.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="s">&quot;fmt&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">t</span> <span class="kt">int</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//Read</span>
+</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">t</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//Write</span>
+</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Limitation</strong>
+But fmt is very slow if you want to read a lot of data from the stdin or write to stdout. In this situation, we can use the <code>bufio</code> instead.</p>
+
+<h2>Bufio</h2>
+
+<h3>Scanner</h3>
+
+<p>For the bufio, one way is to use the Scanner.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;fmt&quot;</span>
+</span><span class='line'>    <span class="s">&quot;os&quot;</span>
+</span><span class='line'>    <span class="s">&quot;bufio&quot;</span>
+</span><span class='line'>    <span class="s">&quot;strconv&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">sc</span> <span class="p">=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewScanner</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">sc</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">bufio</span><span class="p">.</span><span class="nx">ScanWords</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">sc</span><span class="p">.</span><span class="nx">Scan</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="nx">sc</span><span class="p">.</span><span class="nx">Text</span><span class="p">(),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">t</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">t</span><span class="o">--</span>
+</span><span class='line'>        <span class="nx">sc</span><span class="p">.</span><span class="nx">Scan</span><span class="p">()</span>
+</span><span class='line'>        <span class="nx">v</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseInt</span><span class="p">(</span><span class="nx">sc</span><span class="p">.</span><span class="nx">Text</span><span class="p">(),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Limitation</strong></p>
+
+<p>The buffer size is not very large. Just <code>64 * 1024</code> according to the <a href="http://golang.org/pkg/bufio/#pkg-examples">go lang doc</a>.</p>
+
+<p>If you read a word that is very long such as 10000000, it will return a empty string.</p>
+
+<p>To solve this, we can use the <code>Reader</code> to custom the buffer size or read more times from the buffer to get a very long string.</p>
+
+<h2>Reader</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;bufio&quot;</span>
+</span><span class='line'>    <span class="s">&quot;os&quot;</span>
+</span><span class='line'>    <span class="s">&quot;strconv&quot;</span>
+</span><span class='line'>    <span class="s">&quot;strings&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">const</span> <span class="nx">N</span> <span class="kt">int</span> <span class="p">=</span> <span class="mi">1000005</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lbr</span> <span class="p">=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewReaderSize</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdin</span><span class="p">,</span> <span class="nx">N</span><span class="p">)</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">lbw</span> <span class="p">=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewWriterSize</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">,</span> <span class="nx">N</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//If the line is less then the buffer</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">readline</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">buf</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">lbr</span><span class="p">.</span><span class="nx">ReadLine</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">buf</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//If the line over the buffer</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">read_buf_over_line</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">buf</span> <span class="p">[]</span><span class="kt">byte</span>
+</span><span class='line'>    <span class="k">for</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">bytes</span><span class="p">,</span> <span class="nx">more</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">lbr</span><span class="p">.</span><span class="nx">ReadLine</span><span class="p">()</span>
+</span><span class='line'>        <span class="nx">buf</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">buf</span><span class="p">,</span> <span class="nx">bytes</span><span class="o">...</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">!</span><span class="nx">more</span> <span class="p">{</span> <span class="k">break</span> <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">buf</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">str</span> <span class="o">:=</span> <span class="nx">readline</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">m</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">readline</span><span class="p">())</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">q</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">q</span> <span class="p">&lt;</span> <span class="nx">m</span><span class="p">;</span> <span class="nx">q</span><span class="o">++</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">qs</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">readline</span><span class="p">(),</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">lbw</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="s">&quot;Something...\n&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">lbw</span><span class="p">.</span><span class="nx">Flush</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -577,84 +778,6 @@ The <code>SecureRandom.uuid</code> will generate same uuid if you do something l
 </span><span class='line'><span class="nb">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">layoutIfNeeded</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/24/number-theory-euclidean-algorithm-and-inverse-element/">[Number Theory] Euclidean Algorithm &amp; Inverse Element</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-24T23:45:07+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:45 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With the inverse element, we can get the value of modulo in a division, such as <code>k = (a / b) % m</code>. To generate a inverse element, we should know the euclidean algorithm.</p>
-
-<h3>Euclidean Algorithm</h3>
-
-<p>The euclidean algorithm is a method for computing <strong><em>greatest common divisor</em></strong> (GCD) of two integers.
-The algorithm can be described as this:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gcd(a, b) = gcd(b, a % b) </span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Proof:</strong></p>
-
-<p>Suppose <code>c = gcd(a, b)</code> and <code>a &gt; b</code>.
-Then we can write a equation.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>a = xb + m</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Because the gcd of <code>a</code> and <code>b</code> is <code>c</code>, so we can replace the <code>a</code> and <code>b</code> with <code>k1 * c</code> and <code>k2 * c</code>. After replaced <code>a</code> and <code>b</code>, it seems like we also can replace <code>m</code> with <code>k3 * c</code>. So the equation will like this:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>k1 * c = x * k2 * c + k3 * c</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p>So <code>m</code> and <code>b</code> have the same gcd. Therefore the value of the <code>gcd(a, b)</code>
-is the same with the value of <code>gcd(b, a % b)</code></p>
-
-<p>So for this, we can get a gcd(a, b) quickly with such as c++ language.</p>
-
-<p>The code will like this:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Solve <em>ax + by = gcd(a, b)</em></h3>
-
-<p><strong><em>To be continued&hellip;</em></strong></p>
 </div>
   
   

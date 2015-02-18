@@ -5,19 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>[Rails] FactoryGirl Generate Random Users - zhupeijun</title>
+  <title>zhupeijun</title>
   <meta name="author" content="zhupeijun">
 
   
-  <meta name="description" content="If you want to generate a user with different uuid or email address, try to do this way. 1
+  <meta name="description" content="If you have a string like 2014-10-22 00:54:00. You can convert the string to the NSDate. 1
 2
 3
-4
-5
-6
-7
-8
-FactoryGirl.define do factory :user do uuid &hellip;">
+var dateFormater = NSDateFormatter()
+dateFormater. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -26,7 +22,7 @@ FactoryGirl.define do factory :user do uuid &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zhupeijun.github.io/blog/2015/02/03/rails-factorygirl-generate-random-users">
+  <link rel="canonical" href="http://zhupeijun.github.io/posts/3">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="zhupeijun" type="application/atom+xml">
@@ -93,14 +89,15 @@ FactoryGirl.define do factory :user do uuid &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      
-        <h1 class="entry-title">[Rails] FactoryGirl Generate Random Users</h1>
-      
+      <h1 class="entry-title"><a href="/blog/2014/10/22/ios-get-date-from-formatted-string-or-make-a-formatted-date-string/">[iOS] Get Date From Formatted String or Make a Formatted Date String</a></h1>
     
     
       <p class="meta">
@@ -109,7 +106,7 @@ FactoryGirl.define do factory :user do uuid &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-02-03T21:01:13+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:01 pm</span></time>
+<time class='entry-date' datetime='2014-10-22T13:40:35+09:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>1:40 pm</span></time>
         
         
       </p>
@@ -117,89 +114,49 @@ FactoryGirl.define do factory :user do uuid &hellip;">
   </header>
 
 
-<div class="entry-content"><p>If you want to generate a user with different uuid or email address, try to do this way.</p>
+  <div class="entry-content"><p>If you have a string like <code>2014-10-22 00:54:00</code>. You can convert the string to the <code>NSDate</code>.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">FactoryGirl</span><span class="o">.</span><span class="n">define</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">factory</span> <span class="ss">:user</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">uuid</span>                  <span class="p">{</span> <span class="no">SecureRandom</span><span class="o">.</span><span class="n">uuid</span> <span class="p">}</span>
-</span><span class='line'>    <span class="n">sequence</span><span class="p">(</span><span class="ss">:email</span><span class="p">)</span>      <span class="p">{</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="s2">&quot;test</span><span class="si">#{</span><span class="n">n</span><span class="si">}</span><span class="s2">@abc.com&quot;</span> <span class="p">}</span>
-</span><span class='line'>    <span class="n">password</span>              <span class="s2">&quot;password&quot;</span>
-</span><span class='line'>    <span class="n">password_confirmation</span> <span class="s2">&quot;password&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="n">dateFormater</span> <span class="o">=</span> <span class="bp">NSDateFormatter</span><span class="p">()</span>
+</span><span class='line'><span class="n">dateFormater</span><span class="p">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>
+</span><span class='line'><span class="k">var</span> <span class="n">startTime</span> <span class="o">=</span> <span class="n">dateFormater</span><span class="p">.</span><span class="n">dateFromString</span><span class="p">(</span><span class="s">&quot;2014-10-22 00:54:00&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>POINT:</strong>
-The <code>SecureRandom.uuid</code> will generate same uuid if you do something like this.</p>
+<p></p>
+
+<p>If you have a <code>NSDate</code>, you also can use the <code>NSDateFormatter</code> to generate a formatted string.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">uuid</span>  <span class="no">SecureRandom</span><span class="o">.</span><span class="n">uuid</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">dateFormater</span> <span class="o">=</span> <span class="bp">NSDateFormatter</span><span class="p">()</span>
+</span><span class='line'><span class="n">dateFormater</span><span class="p">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="k">let</span> <span class="n">dateString</span> <span class="o">=</span> <span class="n">dateFormater</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
+  
   
 
 
-
-  <span class="byline author vcard">Authored by <span class="fn">
+    </article>
   
-    zhupeijun
-  
-  </span></span>
-
-
-      
-
-
-
-
-<time class='entry-date' datetime='2015-02-03T21:01:13+09:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:01 pm</span></time>
-      
-      
-
-
-    </p>
+  <div class="pagination">
     
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://zhupeijun.github.io/blog/2015/02/03/rails-factorygirl-generate-random-users/" data-via="" data-counturl="http://zhupeijun.github.io/blog/2015/02/03/rails-factorygirl-generate-random-users/" >Tweet</a>
-  
-  
-  <div class="g-plusone" data-size="medium"></div>
-  
-  
-    <div class="fb-like" data-layout="button_count" data-send="false" data-width="300" data-show-faces="false"></div>
-  
-</div>
-
+    <a href="/blog/archives">Blog Archives</a>
     
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2015/01/11/rails-custom-validator/" title="Previous Post: [Rails] Custom Validator">&laquo; [Rails] Custom Validator</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2015/02/18/go-read-from-stdin/" title="Next Post: [Go] Read from stdin">[Go] Read from stdin &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
-
+    <a class="next" href="/posts/2">Newer &rarr;</a>
+    
+  </div>
 </div>
+<aside class="sidebar">
+  
+    
+  
+</aside>
 
     </div>
   </div>

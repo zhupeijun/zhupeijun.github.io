@@ -9,8 +9,7 @@
   <meta name="author" content="zhupeijun">
 
   
-  <meta name="description" content="If you want to only push the current branch without the branch name, you can use this command to setup your config file. 1
-git config --global push. &hellip;">
+  <meta name="description" content="With the inverse element, we can get the value of modulo in a division, such as k = (a / b) % m. To generate a inverse element, we should know the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +87,84 @@ git config --global push. &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/11/24/number-theory-euclidean-algorithm-and-inverse-element/">[Number Theory] Euclidean Algorithm &amp; Inverse Element</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-24T23:45:07+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:45 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>With the inverse element, we can get the value of modulo in a division, such as <code>k = (a / b) % m</code>. To generate a inverse element, we should know the euclidean algorithm.</p>
+
+<h3>Euclidean Algorithm</h3>
+
+<p>The euclidean algorithm is a method for computing <strong><em>greatest common divisor</em></strong> (GCD) of two integers.
+The algorithm can be described as this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gcd(a, b) = gcd(b, a % b) </span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Proof:</strong></p>
+
+<p>Suppose <code>c = gcd(a, b)</code> and <code>a &gt; b</code>.
+Then we can write a equation.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>a = xb + m</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Because the gcd of <code>a</code> and <code>b</code> is <code>c</code>, so we can replace the <code>a</code> and <code>b</code> with <code>k1 * c</code> and <code>k2 * c</code>. After replaced <code>a</code> and <code>b</code>, it seems like we also can replace <code>m</code> with <code>k3 * c</code>. So the equation will like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>k1 * c = x * k2 * c + k3 * c</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>So <code>m</code> and <code>b</code> have the same gcd. Therefore the value of the <code>gcd(a, b)</code>
+is the same with the value of <code>gcd(b, a % b)</code></p>
+
+<p>So for this, we can get a gcd(a, b) quickly with such as c++ language.</p>
+
+<p>The code will like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="kt">int</span> <span class="nf">gcd</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">gcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Solve <em>ax + by = gcd(a, b)</em></h3>
+
+<p><strong><em>To be continued&hellip;</em></strong></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -592,59 +669,9 @@ Why pick up the H, I, J? Because the client and server have the same ancestor D,
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/22/ios-get-date-from-formatted-string-or-make-a-formatted-date-string/">[iOS] Get Date From Formatted String or Make a Formatted Date String</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-22T13:40:35+09:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>1:40 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you have a string like <code>2014-10-22 00:54:00</code>. You can convert the string to the <code>NSDate</code>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">var</span> <span class="n">dateFormater</span> <span class="o">=</span> <span class="bp">NSDateFormatter</span><span class="p">()</span>
-</span><span class='line'><span class="n">dateFormater</span><span class="p">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>
-</span><span class='line'><span class="k">var</span> <span class="n">startTime</span> <span class="o">=</span> <span class="n">dateFormater</span><span class="p">.</span><span class="n">dateFromString</span><span class="p">(</span><span class="s">&quot;2014-10-22 00:54:00&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p>If you have a <code>NSDate</code>, you also can use the <code>NSDateFormatter</code> to generate a formatted string.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='swift'><span class='line'><span class="k">let</span> <span class="n">dateFormater</span> <span class="o">=</span> <span class="bp">NSDateFormatter</span><span class="p">()</span>
-</span><span class='line'><span class="n">dateFormater</span><span class="p">.</span><span class="n">dateFormat</span> <span class="o">=</span> <span class="s">&quot;yyyy-MM-dd HH:mm:ss&quot;</span><span class="p">;</span>
-</span><span class='line'><span class="k">let</span> <span class="n">dateString</span> <span class="o">=</span> <span class="n">dateFormater</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="n">today</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
